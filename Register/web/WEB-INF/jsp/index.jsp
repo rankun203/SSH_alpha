@@ -5,13 +5,15 @@
   Time: 下午10:28
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
 <%String basePath = request.getScheme() + "://" + request.getServerName() +":" + request.getServerPort() + request.getContextPath() + "/";%>
 <!DOCTYPE html>
 <html>
   <head>
       <base href="<%=basePath%>"/>
     <title>Register</title>
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="../../css/style.css" />
   </head>
   <body>
 	<div class="container">
@@ -23,19 +25,22 @@
             	欢迎注册
             </div>
             <div class="formBox">
-                <form method="post" action="servlet/RegisterServlet">
+                <form method="post" action="actions/UserRegister">
                     <table>
                         <tr>
+                            <td colspan="2"><span class=""><s:property value="promptStr"/>&nbsp;</span></td>
+                        </tr>
+                        <tr>
                             <td><label for="userName">用户名：</label></td>
-                            <td><input type="text" name="userName" id="userName" /></td>
+                            <td><input type="text" name="user.userName" id="userName" /></td>
                         </tr>
                         <tr>
                             <td><label for="passWord">密码：</label></td>
-                            <td><input type="password" name="passWord" id="passWord"/></td>
+                            <td><input type="password" name="user.passWord" id="passWord"/></td>
                         </tr>
                         <tr>
                             <td><label for="rePass">重复密码：</label></td>
-                            <td><input type="password" name="rePass" id="rePass"/></td>
+                            <td><input type="password" name="user.rePass" id="rePass"/></td>
                         </tr>
                         <tr>
                             <td colspan="2" style="text-align: center;"><input type="submit" value="提交"/></td>
@@ -44,6 +49,7 @@
                 </form>
             </div>
         </div>
+        <s:debug/>
     </div>
   </body>
 </html>

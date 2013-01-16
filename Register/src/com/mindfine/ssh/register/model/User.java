@@ -11,6 +11,15 @@ public class User {
     private int id;
     private String userName;
     private String passWord;
+    private String rePass;
+
+    public String getRePass() {
+        return rePass;
+    }
+
+    public void setRePass(String rePass) {
+        this.rePass = rePass;
+    }
 
     public int getId() {
         return id;

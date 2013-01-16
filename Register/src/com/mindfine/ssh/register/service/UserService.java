@@ -12,6 +12,8 @@ import com.mindfine.ssh.register.model.User;
 public class UserService {
     private IUserDAO userDAO;
 
+    public UserService(){}
+
     public void register(User user){
         userDAO.insertUser(user);
         System.out.println("注册了一个用户");

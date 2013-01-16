@@ -10,7 +10,7 @@ import java.sql.DriverManager;
  * Time: 上午9:12
  */
 public class DB {
-    Connection connection;
+    private Connection connection;
     public DB() throws Exception{
         try{
             Class.forName("net.sourceforge.jtds.jdbc.Driver");
