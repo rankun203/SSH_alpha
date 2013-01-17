@@ -2,6 +2,7 @@ package com.mindfine.ssh.register.actions;
 
 import com.mindfine.ssh.register.dao.IUserDAO;
 import com.mindfine.ssh.register.dao.impl.IUserDAOImpl;
+import com.mindfine.ssh.register.dao.impl.IUserDAOImplHibernate;
 import com.mindfine.ssh.register.model.User;
 import com.mindfine.ssh.register.service.UserService;
 import com.opensymphony.xwork2.ActionSupport;
@@ -35,7 +36,7 @@ public class RegisterAction extends ActionSupport {
     }
 
     public String userRegister() throws Exception {
-        IUserDAO userDAO = new IUserDAOImpl();
+        IUserDAOImplHibernate userDAO = new IUserDAOImplHibernate();
         UserService us = new UserService();
         us.setUserDAO(userDAO);
         us.register(user);

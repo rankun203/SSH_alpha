@@ -1,12 +1,18 @@
 package com.mindfine.ssh.register.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 /**
  * Created with IntelliJ IDEA.
  * User: rankun203
  * Date: 13-1-9
  * Time: 上午1:08
  */
-
+@Entity
+@Table(name = "t_user")
 public class User {
     private int id;
     private String userName;
@@ -21,6 +27,8 @@ public class User {
         this.rePass = rePass;
     }
 
+    @Id
+    @GeneratedValue
     public int getId() {
         return id;
     }
