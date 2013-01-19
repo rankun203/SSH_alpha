@@ -17,7 +17,7 @@
     </package>
 
     <package name="actions" extends="struts-default" namespace="/actions">
-        <action name="User*" class="com.mindfine.ssh.register.actions.RegisterAction" method="user{1}">
+        <action name="User*" class="registerAction" method="user{1}">
             <result name="success">/WEB-INF/jsp/index.jsp</result>
         </action>
         <action name="login" class="com.mindfine.ssh.register.actions.LoginAction">

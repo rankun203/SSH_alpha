@@ -2,7 +2,6 @@ package com.mindfine.ssh.register.DB;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
-import org.hibernate.service.ServiceRegistry;
 
 /**
  * Created with IntelliJ IDEA.

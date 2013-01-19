@@ -28,7 +28,7 @@
                 <form method="post" action="actions/UserRegister">
                     <table>
                         <tr>
-                            <td colspan="2"><span class=""><s:property value="promptStr"/>&nbsp;</span></td>
+                            <td colspan="2"><span class="promptColor"><s:property value="promptStr"/>&nbsp;</span></td>
                         </tr>
                         <tr>
                             <td><label for="userName">用户名：</label></td>

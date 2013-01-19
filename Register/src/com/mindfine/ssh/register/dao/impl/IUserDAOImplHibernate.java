@@ -11,6 +11,7 @@ import org.hibernate.SessionFactory;
  * Date: 13-1-16
  * Time: 下午9:49
  */
+//@Component("userDAO")
 public class IUserDAOImplHibernate implements IUserDAO {
     SessionFactory mySessionFactory;
 
@@ -20,7 +21,7 @@ public class IUserDAOImplHibernate implements IUserDAO {
 
     @Override
     public void insertUser(User user) {
-        Session session = mySessionFactory.getCurrentSession();
+        Session session = mySessionFactory.openSession();
         session.beginTransaction();
         session.save(user);
         session.getTransaction().commit();

@@ -1,11 +1,11 @@
 package com.mindfine.ssh.register.actions;
 
-import com.mindfine.ssh.register.dao.IUserDAO;
-import com.mindfine.ssh.register.dao.impl.IUserDAOImpl;
-import com.mindfine.ssh.register.dao.impl.IUserDAOImplHibernate;
 import com.mindfine.ssh.register.model.User;
 import com.mindfine.ssh.register.service.UserService;
 import com.opensymphony.xwork2.ActionSupport;
+import org.springframework.stereotype.Component;
+
+import javax.annotation.Resource;
 
 /**
  * Created with IntelliJ IDEA.
@@ -13,10 +13,20 @@ import com.opensymphony.xwork2.ActionSupport;
  * Date: 13-1-14
  * Time: 下午2:21
  */
+//@Component("registerAction")
 public class RegisterAction extends ActionSupport {
     private User user;
     private String promptStr;
+    UserService userService;
 
+    public UserService getUserService() {
+        return userService;
+    }
+
+//    @Resource(name = "userService")
+    public void setUserService(UserService userService) {
+        this.userService = userService;
+    }
 
     public String getPromptStr() {
         return promptStr;
@@ -31,17 +41,18 @@ public class RegisterAction extends ActionSupport {
     }
 
     public void setUser(User user) {
-        System.out.println("user.getUserName(): " + user.getUserName());
         this.user = user;
     }
 
     public String userRegister() throws Exception {
+/*
         IUserDAOImplHibernate userDAO = new IUserDAOImplHibernate();
         UserService us = new UserService();
         us.setUserDAO(userDAO);
-        us.register(user);
-
+*/
+        userService.register(user);
         promptStr = "哈哈，添加成功。";
+
         return SUCCESS;
     }
 
