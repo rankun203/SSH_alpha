@@ -14,13 +14,13 @@ import org.springframework.transaction.annotation.Transactional;
 public class UserService {
     private IUserDAOImplHibernate userDAO;
 
+    @Transactional
     public void register(User user){
         userDAO.insertUser(user);
         System.out.println("注册了一个用户");
     }
 
 //    @Resource
-    @Transactional
     public void setUserDAO(IUserDAOImplHibernate userDAO) {
         this.userDAO = userDAO;
     }

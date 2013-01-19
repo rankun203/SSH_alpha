@@ -2,8 +2,7 @@ package com.mindfine.ssh.register.dao.impl;
 
 import com.mindfine.ssh.register.dao.IUserDAO;
 import com.mindfine.ssh.register.model.User;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
+import org.springframework.orm.hibernate3.HibernateTemplate;
 
 /**
  * Created with IntelliJ IDEA.
@@ -13,18 +12,15 @@ import org.hibernate.SessionFactory;
  */
 //@Component("userDAO")
 public class IUserDAOImplHibernate implements IUserDAO {
-    SessionFactory mySessionFactory;
+    HibernateTemplate hibernateTemplate;
 
-    public void setMySessionFactory(SessionFactory mySessionFactory) {
-        this.mySessionFactory = mySessionFactory;
+    public void setHibernateTemplate(HibernateTemplate hibernateTemplate) {
+        this.hibernateTemplate = hibernateTemplate;
     }
 
     @Override
     public void insertUser(User user) {
-        Session session = mySessionFactory.openSession();
-        session.beginTransaction();
-        session.save(user);
-        session.getTransaction().commit();
-
+        hibernateTemplate.save(user);
+System.out.println("Class.IUserDAOImplHibernate.insertUser() executing");
     }
 }
