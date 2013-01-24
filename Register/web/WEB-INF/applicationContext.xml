@@ -4,8 +4,6 @@
        xmlns:tx="http://www.springframework.org/schema/tx"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
          http://www.springframework.org/schema/beans/spring-beans.xsd
-
-
          http://www.springframework.org/schema/tx
          http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
 
@@ -17,14 +15,22 @@
         <property name="locations" value="classpath:jdbc.properties"/>
     </bean>
 
+<!--
     <bean id="myDataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
         <property name="driverClass" value="${jdbc.driver}"/>
         <property name="jdbcUrl" value="${jdbc.url}"/>
         <property name="user" value="${jdbc.username}"/>
         <property name="password" value="${jdbc.password}"/>
     </bean>
+-->
+    <bean id="myDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="${jdbc.driver}"/>
+        <property name="url" value="${jdbc.url}"/>
+        <property name="username" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+    </bean>
 
-    <bean id="mySessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+    <bean id="mySessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
         <property name="dataSource" ref="myDataSource"/>
         <property name="packagesToScan">
             <list>
@@ -34,26 +40,30 @@
         <property name="hibernateProperties">
             <value>
                 hibernate.dialect=org.hibernate.dialect.SQLServer2008Dialect
+                hbm2ddl.auto=update
             </value>
         </property>
     </bean>
 
-    <bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+    <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
         <property name="sessionFactory" ref="mySessionFactory" />
     </bean>
     <tx:annotation-driven transaction-manager="transactionManager"/>
 
     <bean id="userDAO" class="com.mindfine.ssh.register.dao.impl.IUserDAOImplHibernate">
-        <property name="hibernateTemplate" ref="hibernateTemplate"/>
+        <!--<property name="hibernateTemplate" ref="hibernateTemplate"/>-->
+        <property name="sessionFactory" ref="mySessionFactory"/>
     </bean>
-    <bean id="userService" class="com.mindfine.ssh.register.service.UserService">
+    <bean id="userService" class="com.mindfine.ssh.register.service.impl.UserServiceImpl">
         <property name="userDAO" ref="userDAO"/>
     </bean>
     <bean id="registerAction" class="com.mindfine.ssh.register.actions.RegisterAction">
         <property name="userService" ref="userService"/>
     </bean>
+<!--
     <bean id="hibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate">
         <property name="sessionFactory" ref="mySessionFactory"/>
     </bean>
+-->
 
 </beans>
