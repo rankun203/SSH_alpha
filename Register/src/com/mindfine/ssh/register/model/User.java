@@ -1,9 +1,6 @@
 package com.mindfine.ssh.register.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * Created with IntelliJ IDEA.
@@ -19,6 +16,7 @@ public class User {
     private String passWord;
     private String rePass;
 
+    @Transient
     public String getRePass() {
         return rePass;
     }

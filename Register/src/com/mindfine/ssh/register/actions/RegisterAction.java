@@ -3,9 +3,6 @@ package com.mindfine.ssh.register.actions;
 import com.mindfine.ssh.register.model.User;
 import com.mindfine.ssh.register.service.UserService;
 import com.opensymphony.xwork2.ActionSupport;
-import org.springframework.stereotype.Component;
-
-import javax.annotation.Resource;
 
 /**
  * Created with IntelliJ IDEA.
@@ -50,10 +47,12 @@ public class RegisterAction extends ActionSupport {
         UserService us = new UserService();
         us.setUserDAO(userDAO);
 */
-        userService.register(user);
-        promptStr = "哈哈，添加成功。";
-
-        return SUCCESS;
+        if (userService.register(user)) {
+            promptStr = "哈哈，添加成功。";
+            return SUCCESS;
+        }
+        promptStr = "两次输入密码不一致，请重新输入。";
+        return ERROR;
     }
 
 }

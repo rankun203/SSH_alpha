@@ -25,28 +25,30 @@
             	欢迎注册
             </div>
             <div class="formBox">
-                <form method="post" action="actions/UserRegister">
+                <form method="post" action="actions/UserRegister.action">
+                    <input type="hidden" name="mast" value="嘿嘿" />
                     <table>
                         <tr>
                             <td colspan="2"><span class="promptColor"><s:property value="promptStr"/>&nbsp;</span></td>
                         </tr>
                         <tr>
                             <td><label for="userName">用户名：</label></td>
-                            <td><input type="text" name="user.userName" id="userName" /></td>
+                            <td><input type="text" name="user.userName" id="userName" class="inputField" /></td>
                         </tr>
                         <tr>
                             <td><label for="passWord">密码：</label></td>
-                            <td><input type="password" name="user.passWord" id="passWord"/></td>
+                            <td><input type="password" name="user.passWord" id="passWord" class="inputField"/></td>
                         </tr>
                         <tr>
                             <td><label for="rePass">重复密码：</label></td>
-                            <td><input type="password" name="user.rePass" id="rePass"/></td>
+                            <td><input type="password" name="user.rePass" id="rePass" class="inputField"/></td>
                         </tr>
                         <tr>
                             <td colspan="2" style="text-align: center;"><input type="submit" value="提交"/></td>
                         </tr>
                     </table>
                 </form>
+                发送邮件：<a href="mailto:rankun203@gmail.com">rankun203@gmail.com</a>
             </div>
         </div>
         <s:debug/>
