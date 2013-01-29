@@ -5,6 +5,7 @@ import com.mindfine.ssh.register.model.User;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.orm.hibernate3.HibernateTemplate;
 
 /**
  * Created with IntelliJ IDEA.
@@ -20,19 +21,14 @@ public class IUserDAOImplHibernate implements IUserDAO {
         this.sessionFactory = sessionFactory;
     }
 
+    public Session getSession(){
+        return sessionFactory.getCurrentSession();
+    }
+
     @Override
     public void insertUser(User user) {
 //        hibernateTemplate.save(user);
-        Session session = null;
-        try {
-            session = sessionFactory.getCurrentSession();
-            session.save(user);
-            session.getTransaction().commit();
-        } catch (HibernateException he) {
-            if (session != null) {
-                session.getTransaction().rollback();
-            }
-            he.printStackTrace();
-        }
+//        HibernateTemplate hibernateTemplate;
+        getSession().save(user);
     }
 }

@@ -57,7 +57,7 @@
     <bean id="userService" class="com.mindfine.ssh.register.service.impl.UserServiceImpl">
         <property name="userDAO" ref="userDAO"/>
     </bean>
-    <bean id="registerAction" class="com.mindfine.ssh.register.actions.RegisterAction">
+    <bean id="registerAction" class="com.mindfine.ssh.register.actions.RegisterAction" scope="prototype">
         <property name="userService" ref="userService"/>
     </bean>
 <!--

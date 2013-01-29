@@ -3,7 +3,6 @@ package com.mindfine.ssh.register.service.impl;
 import com.mindfine.ssh.register.dao.impl.IUserDAOImplHibernate;
 import com.mindfine.ssh.register.model.User;
 import com.mindfine.ssh.register.service.UserService;
-import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
@@ -17,7 +16,7 @@ public class UserServiceImpl implements UserService {
     private IUserDAOImplHibernate userDAO;
 
     @Override
-    @Transactional(propagation = Propagation.SUPPORTS)
+    @Transactional
     public boolean register(User user) {
         if (user.getPassWord().equals(user.getRePass())) {
             userDAO.insertUser(user);

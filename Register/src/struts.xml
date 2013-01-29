@@ -6,10 +6,10 @@
 <struts>
 
     <constant name="struts.enable.DynamicMethodInvocation" value="false" />
-    <!--<constant name="struts.devMode" value="true" />-->
+    <constant name="struts.devMode" value="true" />
     <constant name="struts.i18n.encoding" value="UTF-8"/>
 
-    <package name="noNameSpace" extends="struts-default" namespace="/">
+    <package name="noNameSpace" extends="struts-default" namespace="/registration">
         <default-action-ref name="index"/>
         <action name="index">
             <result>/WEB-INF/jsp/index.jsp</result>
