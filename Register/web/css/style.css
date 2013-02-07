@@ -4,9 +4,12 @@
 body{margin:0; padding:0; color: #717B80; line-height: 200%;}
 .promptColor{ color:#484;}
 .error{color: #f00;}
+.clearBoth{clear: both;}
+
 .collapseBorder{border-collapse:collapse; border-top:3px #fff solid; font-weight: bold;}
 .collapseBorder tr td{border-left: 10px #fff solid;}
-.collapseBorder tr td:hover{ border-top:3px #0f0 solid; color: #0f0; cursor: pointer;}
+#selectA{ border-top:3px #4a4 solid; color: #4a4;}
+.collapseBorder tr td:hover{ border-top:3px #4a4 solid; color: #4a4; cursor: pointer;}
 .uploadBox{margin-top: 50px;}
 .container{width:1003px; margin:0 auto;}
 .titleBlock{ font-style:italic; width: 100%; height: 30px; margin-top: 20px;}
@@ -14,5 +17,14 @@ body{margin:0; padding:0; color: #717B80; line-height: 200%;}
 .rtitle{ margin:10px 0 0 10px;}
 .formBox{margin:10px 0 0 10px;}
 .inputField{width:160px;}
-.fileSelectField{width: 60%; background-color: #fff8dc;}
 .fieldSetStyle{border-radius: 5px 10% 10% 5px;}
+
+.fileSelectField{width: 60%; border: 1px solid #fff;}
+.progressBar{width:100%; height:15px; border: 1px #4a4 solid; margin:0; padding:0 2px 0 0; }
+.progression{width:0; height:13px; margin:1px 0 1px 1px; background-color: #4a4;
+    -webkit-transition-property:width;
+    -webkit-transition-duration:0.5s;
+}
+.progressionTit{font-size: 12px; line-height: 15px; color: #141; margin-top: -15px;}
+.uploadProgressionTitLeft{float: left; text-align: right; width: 40%;}
+.uploadProgressionTitRight{float: right; width: 40%;}
